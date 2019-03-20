@@ -155,6 +155,20 @@ def for_printer(big_list=None):
 
 def soup_print(size):
     soup_string = ''
+    #Replace if statements with a dictionary to reduce number of if statements slightly increasing speed and increasing readiability
+    soup_string_components_begin = {
+        1:'Cup of ',
+        2:'Bowl of ',
+    }
+    soup_string_components_end = {
+        1:'     $4.76',
+        2:'     $7.62',
+    }
+
+    soup_string = soup_string_components_begin[size] + soup_string_components_end[size] + '\n'
+
+    return soup_string
+    '''
     if size == 1:
         soup_string = 'Cup of '
     if size == 2:
@@ -165,6 +179,7 @@ def soup_print(size):
         soup_string += '     $7.62'
     soup_string += '\n'
     return soup_string
+    '''
 
 
 class Pos(Widget):
