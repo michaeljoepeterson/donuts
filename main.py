@@ -5,26 +5,26 @@ import random
 import math
 from escpos.printer import Network
 from kivy.app import App
-from kivy.core.window import Window
+# from kivy.core.window import Window
 from kivy.uix.widget import Widget
 from kivy.clock import Clock
 
-Window.size = (1280, 768)
+# Window.size = (1280, 768) # uncomment on windows
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-host = '192.168.1.21'  # get local machine name
-port = 12345
+host = '192.168.1.20'  # get local machine name
+port = 13131
 
 try:
     print('starting host.')
-    # sock.connect((host, port))  # uncomment on raspberry pi
+    sock.connect((host, port))  # uncomment on raspberry pi
 except Exception as e:
     print(e)
 
-# conn = sqlite3.connect('/home/sysop/bot/order.db')  # uncomment on raspberry pi
+conn = sqlite3.connect('/home/sysop/pos/order.db')  # uncomment on raspberry pi
 
-conn = sqlite3.connect('order.db')  # uncomment on windows
+# conn = sqlite3.connect('order.db')  # uncomment on windows
 
 c = conn.cursor()
 
@@ -53,7 +53,7 @@ def data_test():
             print('looking....')
 
 
-def send_ticket(data):
+def donut_que(data):
     try:
         sock.send(data.encode('utf-8'))
     except Exception as ex:
@@ -61,6 +61,27 @@ def send_ticket(data):
     time.sleep(1)
 
 
+def pos_print(order=None):
+    if order is None:
+        order = []
+    try:
+        epson = Network("192.168.1.100")
+        epson.image("rosie.png")
+        epson.set(font='a', height=3, width=3, align='center')
+        for m in order:
+            epson.text(str(m[3]) + '\n')
+            epson.set(font='a', height=1, width=1, align='left', text_type='u2')
+            epson.text('Order 1 \n')
+            epson.set(text_type='normal')
+            epson.text(str(m[0]))
+            epson.text(' Cups \n')
+        epson.qr('hiddenempire.ca', size=8)
+        epson.cut()
+    except Exception as ex:
+        print(ex)
+
+
+'''
 def for_printer(big_list=None):
     if big_list is None:
         big_list = []
@@ -165,6 +186,7 @@ def soup_print(size):
         soup_string += '     $7.62'
     soup_string += '\n'
     return soup_string
+'''
 
 
 class Pos(Widget):
@@ -245,6 +267,7 @@ class Pos(Widget):
         self.ids.soup2.pos = 5500, 170
         self.ids.soup3.pos = 5500, 20
         self.ids.drink.pos = 1100, 3000
+        # move in the pop.
         self.ids.pop1.pos = 500, 300
         self.ids.pop2.pos = 700, 300
         self.ids.pop3.pos = 900, 300
@@ -322,19 +345,15 @@ class Pos(Widget):
         self.ids.pay.pos = 550, 400
 
     def pay(self):
-        self.m = 0
+        self.m = 3
         if self.start_time:
             Clock.schedule_interval(self.update, 1)
             self.start_time = False
 
-    def update(self, dt):
-        print(dt)
+    def update(self, _):
         if self.m == 3:
             self.payed()
-            # Clock.unschedule(self.update)
             self.m = 6
-        elif self.m < 3:
-            self.m += 1
 
     def payed(self):
         self.ids.pay.pos = 900, 3000
@@ -346,10 +365,19 @@ class Pos(Widget):
         self.gst = 0.00
         self.ids.Gst1.text = '$0.00'
         self.ids.Cash1.text = '$0.00'
-        # for_printer(self.order)
+        m = '$m'
+        n = 1
         for x in self.order:
             data_entry(x[0], x[1], x[2], x[3], x[4])
-            print(x)
+            n = x[3]
+            y = str(x)
+            y = y.strip('[]')
+            print(y)
+            m += y[0]
+            print(n)
+        m += '\n'
+        donut_que(str(m))
+        pos_print(self.order)
         self.pop_name = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         self.num = [0, 0, 0, 0, 0]
         self.pop_index = 0
@@ -366,6 +394,7 @@ class Pos(Widget):
         self.pop_index = 0
         self.drink_num = 1000
         self.clear_it()
+        App.get_running_app().stop()
         self.ids.star.pos = 550, 150
 
 
