@@ -5,26 +5,26 @@ import random
 import math
 from escpos.printer import Network
 from kivy.app import App
-# from kivy.core.window import Window
+from kivy.core.window import Window
 from kivy.uix.widget import Widget
 from kivy.clock import Clock
 
-# Window.size = (1280, 768) # uncomment on windows
+Window.size = (1280, 768) # uncomment on windows
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-host = '192.168.1.20'  # get local machine name
-port = 13131
+host = '192.168.0.17'  # get local machine name
+port = 1234
 
 try:
     print('starting host.')
-    sock.connect((host, port))  # uncomment on raspberry pi
+   # sock.connect((host, port))  # uncomment on raspberry pi
 except Exception as e:
     print(e)
 
-conn = sqlite3.connect('/home/sysop/pos/order.db')  # uncomment on raspberry pi
+#conn = sqlite3.connect('/home/sysop/pos/order.db')  # uncomment on raspberry pi
 
-# conn = sqlite3.connect('order.db')  # uncomment on windows
+conn = sqlite3.connect('order.db')  # uncomment on windows
 
 c = conn.cursor()
 
@@ -377,7 +377,7 @@ class Pos(Widget):
             print(n)
         m += '\n'
         donut_que(str(m))
-        pos_print(self.order)
+        #pos_print(self.order)
         self.pop_name = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         self.num = [0, 0, 0, 0, 0]
         self.pop_index = 0
@@ -394,9 +394,14 @@ class Pos(Widget):
         self.pop_index = 0
         self.drink_num = 1000
         self.clear_it()
-        App.get_running_app().stop()
+        #commented out for testing
+        #App.get_running_app().stop()
         self.ids.star.pos = 550, 150
 
+    #### test stuff
+
+    def test(self):
+        print("test")
 
 create_table()
 

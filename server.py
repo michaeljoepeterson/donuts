@@ -7,7 +7,7 @@ c = conn.cursor()
 
 HEADERSIZE = 10
 
-host = '192.168.86.26'
+host = '192.168.0.17'
 # host = '192.168.1.10'
 # host = '127.0.0.1'  # get local machine name
 port = 12345
