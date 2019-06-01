@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c47ccb57-a313-48bf-a33a-60fa3ef03630" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change beforePath="$PROJECT_DIR$/order.db" afterPath="$PROJECT_DIR$/order.db" />
-      <change beforePath="$PROJECT_DIR$/pickup.py" afterPath="$PROJECT_DIR$/pickup.py" />
-      <change beforePath="$PROJECT_DIR$/pos.kv" afterPath="$PROJECT_DIR$/pos.kv" />
-      <change beforePath="$PROJECT_DIR$/server.py" afterPath="$PROJECT_DIR$/server.py" />
-    </list>
+    <list default="true" id="c47ccb57-a313-48bf-a33a-60fa3ef03630" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
