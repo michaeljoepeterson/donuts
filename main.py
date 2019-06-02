@@ -345,12 +345,15 @@ class Pos(Widget):
         tots = '$' + str(tot2) + '0'
         self.ids.Cash1.text = tots
         if self.pop_index > 3:
-            self.ids.pop1.pos = 500, 3000
-            self.ids.pop2.pos = 700, 3000
-            self.ids.pop3.pos = 900, 3000
-            self.ids.pop4.pos = 1100, 3000
-            self.ids.done.pos = 550, 3000
+            #self.ids.pop1.pos = 500, 3000
+            #self.ids.pop2.pos = 700, 3000
+            #self.ids.pop3.pos = 900, 3000
+            #self.ids.pop4.pos = 1100, 3000
+            #self.ids.done.pos = 550, 3000
             self.ids.pay.pos = 550, 400
+
+            #single method widget hide
+            self.hide_widgets([self.ids.pop1,self.ids.pop2,self.ids.pop3,self.ids.pop4,self.ids.done])
 
     def pops(self):
         self.ids.pop1.pos = 500, 3000
@@ -402,8 +405,8 @@ class Pos(Widget):
         self.ids.star.pos = 550, 150
 
     def next(self):
-        self.ids.pay.pos = 900, 3000
-        self.ids.new.pos = 900, 3000
+        #self.ids.pay.pos = 900, 3000
+        #self.ids.new.pos = 900, 3000
         del self.order[:]
         self.num = [0, 0, 0, 0, 0]
         self.pop_name = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
@@ -414,11 +417,8 @@ class Pos(Widget):
         #App.get_running_app().stop()
         self.ids.star.pos = 550, 150
 
-        #redisplay start with added method
-        #self.display_widget(self.ids.star,1280, 600)
-        #hide all possible widgets
-        #self.hide_widget(self.ids.pay)
-        #self.hide_widget(self.ids.new)
+        #single method display
+        self.hide_widgets([self.ids.pay,self.ids.new])
 
     #### test stuff positioning widgets within functions
     #help with readability and hopefully make changes in the future easier
@@ -441,7 +441,7 @@ class Pos(Widget):
     #pass widgets you want to hide, will set them out of the window, accepts array of widgets
     def hide_widgets(self,widgets):
         for widget in widgets:
-            print(widget)
+            #print(widget)
             widget.pos = (2000, 2000)
         #widget.pos = 900, 3000
         #widget.disabled = True
