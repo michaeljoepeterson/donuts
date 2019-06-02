@@ -203,6 +203,9 @@ class Pos(Widget):
         self.pop_name = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         self.num = [0, 0, 0, 0, 0]
         self.order = []
+        self.hide_all()
+        #self.display_widget(self.ids.star,1280,600)
+        #self.display_widget(self.ids.start_label, 200, 200)
 
     def clear_it(self):
         self.cash = 0.00
@@ -219,29 +222,36 @@ class Pos(Widget):
         self.ids.pop_price3.text = ''
         self.ids.pops4.text = ''
         self.ids.pop_price4.text = ''
-        self.ids.soup4.pos = 5500, 470
-        self.ids.soup1.pos = 5500, 320
-        self.ids.soup2.pos = 5500, 170
-        self.ids.soup3.pos = 5500, 20
-        self.ids.drink.pos = 1100, 3000
-        self.ids.pop1.pos = 500, 3000
-        self.ids.pop2.pos = 700, 3000
-        self.ids.pop3.pos = 900, 3000
-        self.ids.pop4.pos = 1100, 3000
-        self.ids.done.pos = 550, 3000
+        #self.ids.soup4.pos = 5500, 470
+        #self.ids.soup1.pos = 5500, 320
+        #self.ids.soup2.pos = 5500, 170
+        #self.ids.soup3.pos = 5500, 20
+        #self.ids.drink.pos = 1100, 3000
+        #self.ids.pop1.pos = 500, 3000
+        #self.ids.pop2.pos = 700, 3000
+        #self.ids.pop3.pos = 900, 3000
+        #self.ids.pop4.pos = 1100, 3000
+        #self.ids.done.pos = 550, 3000
+
+        #single method to hide any number of widgets
+        self.hide_widgets([self.ids.soup4,self.ids.soup1,self.ids.soup2,self.ids.soup3,self.ids.drink,self.ids.pop1,self.ids.pop2,self.ids.pop3,self.ids.pop4,self.ids.done])
 
     def set_num(self):
         self.key_num = data_test()
 
     def starts(self):
-        self.ids.star.pos = 5500, 150
-        self.ids.soup1.pos = 500, 360
-        self.ids.soup2.pos = 900, 360
-        self.ids.soup3.pos = 500, 20
-        self.ids.soup4.pos = 900, 20
+        #self.ids.star.pos = 5500, 150
+        #self.ids.soup1.pos = 500, 360
+        #self.ids.soup2.pos = 900, 360
+        #self.ids.soup3.pos = 500, 20
+        #self.ids.soup4.pos = 900, 20
+        #contain all donut positioning within this function
+        self.display_donuts()
         self.ids.new.pos = 40, -10
         self.ids.drink.pos = 200, -10
         self.num[3] = self.key_num
+        #Method to hide start Button
+        self.hide_widgets([self.ids.star])
 
     def soup(self, x):
         if x == '1':
@@ -262,16 +272,22 @@ class Pos(Widget):
             self.cash += 19.04
 
         self.num[0] = int(x)
-        self.ids.soup4.pos = 5500, 470
-        self.ids.soup1.pos = 5500, 320
-        self.ids.soup2.pos = 5500, 170
-        self.ids.soup3.pos = 5500, 20
-        self.ids.drink.pos = 1100, 3000
+        #self.ids.soup4.pos = 5500, 470
+        #self.ids.soup1.pos = 5500, 320
+        #self.ids.soup2.pos = 5500, 170
+        #self.ids.soup3.pos = 5500, 20
+        #self.ids.drink.pos = 1100, 3000
+
+        #single function to hide all widgets
+        self.hide_widgets([self.ids.soup4,self.ids.soup1,self.ids.soup2,self.ids.soup3,self.ids.drink])
         # move in the pop.
-        self.ids.pop1.pos = 500, 300
-        self.ids.pop2.pos = 700, 300
-        self.ids.pop3.pos = 900, 300
-        self.ids.pop4.pos = 1100, 300
+        #self.ids.pop1.pos = 500, 300
+        #self.ids.pop2.pos = 700, 300
+        #self.ids.pop3.pos = 900, 300
+        #self.ids.pop4.pos = 1100, 300
+
+        #single function to display pop widgets
+        self.display_pop()
         self.ids.done.pos = 550, 50
         # cash math
         self.gst = self.cash * .05
@@ -398,10 +414,41 @@ class Pos(Widget):
         #App.get_running_app().stop()
         self.ids.star.pos = 550, 150
 
-    #### test stuff
+        #redisplay start with added method
+        #self.display_widget(self.ids.star,1280, 600)
+        #hide all possible widgets
+        #self.hide_widget(self.ids.pay)
+        #self.hide_widget(self.ids.new)
 
-    def test(self):
-        print("test")
+    #### test stuff positioning widgets within functions
+    #help with readability and hopefully make changes in the future easier
+
+    #use this to display donuts
+    def display_donuts(self):
+        self.ids.soup1.pos = 500, 360
+        self.ids.soup2.pos = 900, 360
+        self.ids.soup3.pos = 500, 20
+        self.ids.soup4.pos = 900, 20
+
+    # use this to display pop
+    def display_pop(self):
+        self.ids.pop1.pos = 500, 300
+        self.ids.pop2.pos = 700, 300
+        self.ids.pop3.pos = 900, 300
+        self.ids.pop4.pos = 1100, 300
+        self.ids.done.pos = 550, 50
+
+    #pass widgets you want to hide, will set them out of the window, accepts array of widgets
+    def hide_widgets(self,widgets):
+        for widget in widgets:
+            print(widget)
+            widget.pos = (2000, 2000)
+        #widget.pos = 900, 3000
+        #widget.disabled = True
+
+    #hide all widgets on init
+    def hide_all(self):
+        pass
 
 create_table()
 
