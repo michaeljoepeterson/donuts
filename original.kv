@@ -7,15 +7,13 @@
             size: self.size
             source: 'images/background.png'
 
-
     Label:
         text: "Your Order :"
-        id: order_title
         font_name: 'images/DK Cool Crayon.ttf'
         font_size: 30
         color: 1, 1, 1, 1
         pos: 100, 650
-    #donut label
+
     Label:
         id: order1S
         text: ""
@@ -26,7 +24,7 @@
         valign: 'middle'
         color: 1, 1, 1, 1
         pos: 150, 600
-    #donut price label
+
     Label:
         id: order1SZP
         text: ""
@@ -37,7 +35,7 @@
         valign: 'middle'
         color: 1, 1, 1, 1
         pos: 350, 600
-    #pop name
+
     Label:
         id: pops1
         text: ""
@@ -48,7 +46,7 @@
         valign: 'middle'
         color: 1, 1, 1, 1
         pos: 150, 550
-    #pop price
+
     Label:
         id: pop_price1
         text: ""
@@ -128,7 +126,6 @@
 
     Label:
         text: "Total:"
-        id: total_title
         font_name: 'images/DK Cool Crayon.ttf'
         color: 1, 1, 1, 1
         font_size: 50
@@ -139,7 +136,6 @@
 
     Label:
         text: "GST:"
-        id: gst_title
         font_name: 'images/DK Cool Crayon.ttf'
         color: 1, 1, 1, 1
         font_size: 30
@@ -170,35 +166,14 @@
         valign: 'middle'
         pos: 280, 190
 
-    #label for title
-    Label:
-        id:title_label
-        font_size:70
-        color: 0,0,0,1
-        text:"Rosie's Donuts"
-        pos:600,650
-
     Button:
         id: star
-        #####original styles
-        #background_normal: 'images/red-start.png'
-        #background_down: 'images/red-start-d.png'
-        #pos: 550, 150
-        #size: 600, 400
-        #####original styles
-        pos: 0, 0
-        size: 1280, 600
-        background_normal: ''
-        background_color: .163, .163, .163, .2
+        background_normal: 'images/red-start.png'
+        background_down: 'images/red-start-d.png'
+        pos: 550, 150
+        size: 600, 400
         on_press: root.set_num()
         on_release: root.starts()
-
-    #added label for start button
-    Label:
-        id:start_label
-        font_size:50
-        text:"Tap Here to Begin"
-        pos:600,300
 
     Button:
         id: drink

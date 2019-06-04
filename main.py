@@ -203,7 +203,8 @@ class Pos(Widget):
         self.pop_name = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         self.num = [0, 0, 0, 0, 0]
         self.order = []
-        self.hide_all()
+        #hide the total display
+        self.hide_widgets([self.ids.order_title,self.ids.order1S,self.ids.order1SZP,self.ids.pops1,self.ids.pop_price1,self.ids.pops2,self.ids.pop_price2,self.ids.pops3,self.ids.pop_price3,self.ids.pops4,self.ids.pop_price4,self.ids.total_title,self.ids.gst_title,self.ids.Gst1,self.ids.Cash1])
         #self.display_widget(self.ids.star,1280,600)
         #self.display_widget(self.ids.start_label, 200, 200)
 
@@ -251,7 +252,7 @@ class Pos(Widget):
         self.ids.drink.pos = 200, -10
         self.num[3] = self.key_num
         #Method to hide start Button
-        self.hide_widgets([self.ids.star])
+        self.hide_widgets([self.ids.star,self.ids.start_label])
 
     def soup(self, x):
         if x == '1':
@@ -415,8 +416,9 @@ class Pos(Widget):
         self.clear_it()
         #commented out for testing
         #App.get_running_app().stop()
-        self.ids.star.pos = 550, 150
-
+        #self.ids.star.pos = 550, 150
+        self.ids.star.pos = 0,0
+        self.ids.start_label.pos = 600,300
         #single method display
         self.hide_widgets([self.ids.pay,self.ids.new])
 
