@@ -5,7 +5,7 @@
         Rectangle:
             pos: self.pos
             size: self.size
-            source: 'images/background.png'
+            #source: 'images/background.png'
 
 
     Label:
@@ -208,37 +208,43 @@
         size: 150, 150
         on_press: root.soup('0')
 
+    #donut quantity label
+    Label:
+        id: donut_price_title
+        text: "Total: "
+        font_size: 50
+        color: 0,0,0,1
+        pos: 2000,2000
+
+    Label:
+        id: donut_price
+        text: "$0"
+        font_size: 50
+        color: 0,0,0,1
+        pos: 2000,2000
+
+    Label:
+        id: quantity_label
+        font_size: 120
+        color: 0,0,0,1
+        text: "0"
+        pos: 2000,2000
+
+    #minus donut button
     Button:
-        id: soup1
+        id:donut_minus
         background_normal: 'images/donutBags1.png'
-        background_down: 'images/donutBags1.png'
         pos: 5500, 450
         size: 300, 300
-        on_press: root.soup('1')
+        on_press: root.minus_donuts()
 
+    #plus donut button
     Button:
-        id: soup2
-        background_normal: 'images/donutBags2.png'
-        background_down: 'images/donutBags2.png'
-        pos: 5500, 450
-        size: 300, 300
-        on_press: root.soup('2')
-
-    Button:
-        id: soup3
-        background_normal: 'images/donutBags3.png'
-        background_down: 'images/donutBags3.png'
-        pos: 5500, 450
-        size: 300, 300
-        on_press: root.soup('3')
-
-    Button:
-        id: soup4
+        id:donut_plus
         background_normal: 'images/donutBags4.png'
-        background_down: 'images/donutBags4.png'
         pos: 5500, 450
         size: 300, 300
-        on_press: root.soup('4')
+        on_press: root.plus_donuts()
 
     Label:
         id: soup1L

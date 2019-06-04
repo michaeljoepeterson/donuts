@@ -203,6 +203,9 @@ class Pos(Widget):
         self.pop_name = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
         self.num = [0, 0, 0, 0, 0]
         self.order = []
+        #donut quantity
+        self.donut_quantity = 0
+        self.donut_price = 4.76
         #hide the total display
         self.hide_widgets([self.ids.order_title,self.ids.order1S,self.ids.order1SZP,self.ids.pops1,self.ids.pop_price1,self.ids.pops2,self.ids.pop_price2,self.ids.pops3,self.ids.pop_price3,self.ids.pops4,self.ids.pop_price4,self.ids.total_title,self.ids.gst_title,self.ids.Gst1,self.ids.Cash1])
         #self.display_widget(self.ids.star,1280,600)
@@ -247,9 +250,10 @@ class Pos(Widget):
         #self.ids.soup3.pos = 500, 20
         #self.ids.soup4.pos = 900, 20
         #contain all donut positioning within this function
-        self.display_donuts()
+        #self.display_donuts()
+        self.display_donuts_new()
         self.ids.new.pos = 40, -10
-        self.ids.drink.pos = 200, -10
+        self.ids.drink.pos = 1100, -10
         self.num[3] = self.key_num
         #Method to hide start Button
         self.hide_widgets([self.ids.star,self.ids.start_label])
@@ -292,6 +296,7 @@ class Pos(Widget):
         self.ids.done.pos = 550, 50
         # cash math
         self.gst = self.cash * .05
+        #get 2 decimal points
         sg = math.ceil(self.gst * 100) / 100
         sub = '$' + str(sg)
         self.ids.Gst1.text = sub
@@ -352,7 +357,6 @@ class Pos(Widget):
             #self.ids.pop4.pos = 1100, 3000
             #self.ids.done.pos = 550, 3000
             self.ids.pay.pos = 550, 400
-
             #single method widget hide
             self.hide_widgets([self.ids.pop1,self.ids.pop2,self.ids.pop3,self.ids.pop4,self.ids.done])
 
@@ -424,8 +428,15 @@ class Pos(Widget):
 
     #### test stuff positioning widgets within functions
     #help with readability and hopefully make changes in the future easier
+    #display new donut ui
+    def display_donuts_new(self):
+        self.ids.donut_minus.pos = 50,250
+        self.ids.donut_plus.pos = 900,250
+        self.ids.quantity_label.pos = 575,350
+        self.ids.donut_price_title.pos = 530,150
+        self.ids.donut_price.pos = 700,150
 
-    #use this to display donuts
+    #use this to display original donuts ui
     def display_donuts(self):
         self.ids.soup1.pos = 500, 360
         self.ids.soup2.pos = 900, 360
@@ -444,13 +455,34 @@ class Pos(Widget):
     def hide_widgets(self,widgets):
         for widget in widgets:
             #print(widget)
-            widget.pos = (2000, 2000)
+            widget.pos = (3000, 3000)
         #widget.pos = 900, 3000
         #widget.disabled = True
 
-    #hide all widgets on init
-    def hide_all(self):
-        pass
+    #functions for plus and minus donuts
+    def minus_donuts(self):
+        print("minus donut",self.ids.donut_price.color)
+        if self.donut_quantity > 0:
+            self.donut_quantity -= 1
+            string_quantity = str(self.donut_quantity)
+            rounded_price = math.ceil(self.donut_price * self.donut_quantity * 100) /100
+            string_price = "$" + str(rounded_price)
+            self.ids.quantity_label.color = [0,0,0,1]
+            self.ids.donut_price.color = [0,0,0,1]
+            self.ids.donut_price.text = string_price
+            self.ids.quantity_label.text = string_quantity
+
+    def plus_donuts(self):
+        print("plus donut",self.ids.donut_price.color)
+        if self.donut_quantity < 4:
+            self.donut_quantity += 1
+            string_quantity = str(self.donut_quantity)
+            rounded_price = math.ceil(self.donut_price * self.donut_quantity * 100) / 100
+            string_price = "$" + str(rounded_price)
+            self.ids.quantity_label.color = [0,0,0,1]
+            self.ids.donut_price.color = [0,0,0,1]
+            self.ids.donut_price.text = string_price
+            self.ids.quantity_label.text = string_quantity
 
 create_table()
 
