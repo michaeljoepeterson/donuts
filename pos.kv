@@ -5,7 +5,7 @@
         Rectangle:
             pos: self.pos
             size: self.size
-            #source: 'images/background.png'
+            source: 'newImages/background.png'
 
 
     Label:
@@ -176,6 +176,7 @@
         font_size:70
         color: 0,0,0,1
         text:"Rosie's Donuts"
+        font_name: 'fonts/eurof35.ttf'
         pos:600,650
 
     Button:
@@ -198,27 +199,42 @@
         id:start_label
         font_size:50
         text:"Tap Here to Begin"
+        font_name: 'fonts/eurof35.ttf'
         pos:600,300
 
     Button:
         id: drink
-        background_normal: 'images/just.png'
-        background_down: 'images/just.png'
+        #background_normal: 'images/just.png'
+        #background_down: 'images/just.png'
+        background_normal: 'newImages/just_drink.png'
+        background_down: 'newImages/just_drink.png'
         pos: 5500, 150
-        size: 150, 150
+        size: 250, 250
         on_press: root.soup('0')
 
     #donut quantity label
     Label:
         id: donut_price_title
         text: "Total: "
+        font_name: 'fonts/eurof35.ttf'
         font_size: 50
         color: 0,0,0,1
         pos: 2000,2000
+    Image:
+        source:'newImages/quantity_background.png'
+        pos: 2000,2000
+        id: donut_image
+        size:420,420
+    Image:
+        source:'newImages/donut_image.png'
+        pos: 2000,2000
+        id: donut_bag
+        size:400,400
 
     Label:
         id: donut_price
         text: "$0"
+        font_name: 'fonts/eurof35.ttf'
         font_size: 50
         color: 0,0,0,1
         pos: 2000,2000
@@ -228,12 +244,14 @@
         font_size: 120
         color: 0,0,0,1
         text: "0"
+        font_name: 'fonts/eurof35.ttf'
         pos: 2000,2000
 
     #minus donut button
     Button:
         id:donut_minus
-        background_normal: 'images/donutBags1.png'
+        background_normal: 'newImages/minus.png'
+        background_down: 'newImages/minus.png'
         pos: 5500, 450
         size: 300, 300
         on_press: root.minus_donuts()
@@ -241,10 +259,20 @@
     #plus donut button
     Button:
         id:donut_plus
-        background_normal: 'images/donutBags4.png'
+        background_normal: 'newImages/plus.png'
+        background_down: 'newImages/plus.png'
         pos: 5500, 450
         size: 300, 300
         on_press: root.plus_donuts()
+
+    #next button
+    Button:
+        id: next_button
+        background_normal: 'newImages/next.png'
+        background_down: 'newImages/next.png'
+        pos: 5500, 450
+        size: 250, 250
+        on_press: root.display_pop_new()
 
     Label:
         id: soup1L
@@ -317,8 +345,11 @@
 
     Button:
         id: new
-        background_normal: 'images/startover.png'
-        background_down: 'images/startover.png'
+        #background_normal: 'images/startover.png'
+        #background_down: 'images/startover.png'
+        background_normal: 'newImages/restart.png'
+        background_down: 'newImages/restart.png'
         pos: 550, 3000
-        size: 150, 150
+        #size: 150, 150
+        size: 250,250
         on_press: root.next()
