@@ -4,6 +4,7 @@
     <list default="true" id="c47ccb57-a313-48bf-a33a-60fa3ef03630" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change beforePath="$PROJECT_DIR$/order.db" afterPath="$PROJECT_DIR$/order.db" />
       <change beforePath="$PROJECT_DIR$/pos.kv" afterPath="$PROJECT_DIR$/pos.kv" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="476" column="31" lean-forward="false" selection-start-line="476" selection-start-column="31" selection-end-line="476" selection-end-column="31" />
+            <state relative-caret-position="304">
+              <caret line="249" column="30" lean-forward="false" selection-start-line="249" selection-start-column="30" selection-end-line="249" selection-end-column="30" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -27,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pos.kv" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pos.kv" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pos.kv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="273" column="21" lean-forward="false" selection-start-line="273" selection-start-column="21" selection-end-line="273" selection-end-column="21" />
+            <state relative-caret-position="119">
+              <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -61,6 +62,7 @@
       <find>clear_it</find>
       <find>drink</find>
       <find>soup4</find>
+      <find>just</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -72,14 +74,15 @@
         <option value="$PROJECT_DIR$/server.py" />
         <option value="$PROJECT_DIR$/pickup.py" />
         <option value="$PROJECT_DIR$/original.kv" />
-        <option value="$PROJECT_DIR$/pos.kv" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/pos.kv" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="629" />
-    <option name="width" value="1297" />
+    <option name="x" value="7" />
+    <option name="y" value="1" />
+    <option name="width" value="1289" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
@@ -98,7 +101,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -125,6 +127,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -227,10 +230,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="629" y="0" width="1297" height="1047" extended-state="0" />
+    <frame x="7" y="1" width="1289" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24980484" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24509034" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -269,6 +272,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pos.kv">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4641">
+          <caret line="273" column="21" lean-forward="false" selection-start-line="273" selection-start-column="21" selection-end-line="273" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pos.kv">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
@@ -279,7 +300,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3400">
           <caret line="200" column="0" lean-forward="true" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -564,25 +584,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pos.kv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="273" column="21" lean-forward="false" selection-start-line="273" selection-start-column="21" selection-end-line="273" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="476" column="31" lean-forward="false" selection-start-line="476" selection-start-column="31" selection-end-line="476" selection-end-column="31" />
+        <state relative-caret-position="304">
+          <caret line="249" column="30" lean-forward="false" selection-start-line="249" selection-start-column="30" selection-end-line="249" selection-end-column="30" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pos.kv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>

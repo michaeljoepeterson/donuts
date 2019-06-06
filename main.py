@@ -206,6 +206,8 @@ class Pos(Widget):
         #donut quantity
         self.donut_quantity = 0
         self.donut_price = 4.76
+        self.pop_quantity = 0
+        self.pop_price = 1.90
         #hide the total display
         self.hide_widgets([self.ids.order_title,self.ids.order1S,self.ids.order1SZP,self.ids.pops1,self.ids.pop_price1,self.ids.pops2,self.ids.pop_price2,self.ids.pops3,self.ids.pop_price3,self.ids.pops4,self.ids.pop_price4,self.ids.total_title,self.ids.gst_title,self.ids.Gst1,self.ids.Cash1])
         #self.display_widget(self.ids.star,1280,600)
@@ -242,7 +244,11 @@ class Pos(Widget):
         self.donut_quantity = 0
         self.ids.donut_price.text = "$0"
         self.ids.quantity_label.text = "0"
-        self.hide_widgets([self.ids.donut_price_title, self.ids.donut_price, self.ids.quantity_label, self.ids.donut_minus,self.ids.donut_plus,self.ids.donut_image,self.ids.donut_bag, self.ids.drink, self.ids.pop1,self.ids.pop2, self.ids.pop3, self.ids.pop4, self.ids.done,self.ids.next_button])
+        self.ids.pop_quantity1.text = "0"
+        self.ids.pop_quantity2.text = "0"
+        self.ids.pop_quantity3.text = "0"
+        self.ids.pop_quantity4.text = "0"
+        self.hide_widgets([self.ids.donut_price_title, self.ids.donut_price, self.ids.quantity_label, self.ids.donut_minus,self.ids.donut_plus,self.ids.donut_image,self.ids.donut_bag, self.ids.drink, self.ids.pop1,self.ids.pop2, self.ids.pop3, self.ids.pop4, self.ids.done,self.ids.next_button,self.ids.pop_quantity1,self.ids.pop_quantity2,self.ids.pop_quantity3,self.ids.pop_quantity4,self.ids.next_button_pop])
 
     def set_num(self):
         self.key_num = data_test()
@@ -289,7 +295,12 @@ class Pos(Widget):
         #self.ids.drink.pos = 1100, 3000
 
         #single function to hide all widgets
-        self.hide_widgets([self.ids.soup4,self.ids.soup1,self.ids.soup2,self.ids.soup3,self.ids.drink])
+        #self.hide_widgets([self.ids.soup4,self.ids.soup1,self.ids.soup2,self.ids.soup3,self.ids.drink])
+        self.hide_widgets(
+            [self.ids.quantity_label, self.ids.donut_minus,
+             self.ids.donut_plus, self.ids.donut_image, self.ids.donut_bag, self.ids.drink, self.ids.done,
+             self.ids.next_button])
+
         # move in the pop.
         #self.ids.pop1.pos = 500, 300
         #self.ids.pop2.pos = 700, 300
@@ -297,8 +308,9 @@ class Pos(Widget):
         #self.ids.pop4.pos = 1100, 300
 
         #single function to display pop widgets
-        self.display_pop()
-        self.ids.done.pos = 550, 50
+        #self.display_pop()
+        self.display_pop_new()
+        #self.ids.done.pos = 550, 50
         # cash math
         self.gst = self.cash * .05
         #get 2 decimal points
@@ -322,18 +334,36 @@ class Pos(Widget):
             self.pop_name[self.pop_index] = 'Pepsi'
             self.pop_name[self.pop_index + 4] = '$1.90'
             self.drink_num += 1
+            #for new quantites
+            newQuantity = int(self.ids.pop_quantity1.text) + 1
+            self.ids.pop_quantity1.text = str(newQuantity)
+
         if x == '2':
             self.pop_name[self.pop_index] = '7up'
             self.pop_name[self.pop_index + 4] = '$1.90'
             self.drink_num += 10
+            newQuantity = int(self.ids.pop_quantity2.text) + 1
+            self.ids.pop_quantity2.text = str(newQuantity)
+
         if x == '3':
             self.pop_name[self.pop_index] = 'Root Beer'
             self.pop_name[self.pop_index + 4] = '$1.90'
             self.drink_num += 100
+            newQuantity = int(self.ids.pop_quantity3.text) + 1
+            self.ids.pop_quantity3.text = str(newQuantity)
+
         if x == '4':
             self.pop_name[self.pop_index] = 'Mountain Dew'
             self.pop_name[self.pop_index + 4] = '$1.90'
             self.drink_num += 1000
+            newQuantity = int(self.ids.pop_quantity4.text) + 1
+            self.ids.pop_quantity4.text = str(newQuantity)
+        #added to update total label
+        total_price = float(self.ids.donut_price.text.replace("$","")) + 1.90
+        rounded_price = math.ceil(total_price * 100) / 100
+        string_price = "$" + str(rounded_price)
+        self.ids.donut_price.text = string_price
+
         self.ids.pops1.text = self.pop_name[0]
         self.ids.pop_price1.text = self.pop_name[4]
         self.ids.pops2.text = self.pop_name[1]
@@ -460,8 +490,23 @@ class Pos(Widget):
         self.ids.pop4.pos = 1100, 300
         self.ids.done.pos = 550, 50
 
+    def donut_next_clicked(self):
+        self.soup(self.donut_quantity)
+
     def display_pop_new(self):
-        print("next")
+        self.ids.next_button_pop.pos = 505, -60
+        self.ids.pop1.pos = 120,270
+        self.ids.pop2.pos = 370, 270
+        self.ids.pop3.pos = 620, 270
+        self.ids.pop4.pos = 870, 270
+        #labels
+        self.ids.pop_quantity1.pos = 225, 240
+        self.ids.pop_quantity2.pos = 475, 240
+        self.ids.pop_quantity3.pos = 725, 240
+        self.ids.pop_quantity4.pos = 977, 240
+
+    def pop_next_clicked(self):
+        pass
 
     #pass widgets you want to hide, will set them out of the window, accepts array of widgets
     def hide_widgets(self,widgets):

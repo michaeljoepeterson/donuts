@@ -265,14 +265,23 @@
         size: 300, 300
         on_press: root.plus_donuts()
 
-    #next button
+    #donut next button
     Button:
         id: next_button
         background_normal: 'newImages/next.png'
         background_down: 'newImages/next.png'
         pos: 5500, 450
         size: 250, 250
-        on_press: root.display_pop_new()
+        on_press: root.donut_next_clicked()
+
+    #pop next button
+    Button:
+        id: next_button_pop
+        background_normal: 'newImages/next.png'
+        background_down: 'newImages/next.png'
+        pos: 5500, 450
+        size: 250, 250
+        on_press: root.pop_next_clicked()
 
     Label:
         id: soup1L
@@ -296,35 +305,76 @@
         valign: 'middle'
         pos: 6600, 560
 
+    Label:
+        id: pop_quantity1
+        font_size: 100
+        color: 0,0,0,1
+        text: "0"
+        font_name: 'fonts/eurof35.ttf'
+        pos: 2000,2000
+
+    Label:
+        id: pop_quantity2
+        font_size: 100
+        color: 0,0,0,1
+        text: "0"
+        font_name: 'fonts/eurof35.ttf'
+        pos: 2000,2000
+
+    Label:
+        id: pop_quantity3
+        font_size: 100
+        color: 0,0,0,1
+        text: "0"
+        font_name: 'fonts/eurof35.ttf'
+        pos: 2000,2000
+
+    Label:
+        id: pop_quantity4
+        font_size: 100
+        color: 0,0,0,1
+        text: "0"
+        font_name: 'fonts/eurof35.ttf'
+        pos: 2000,2000
+
     Button:
         id: pop1
-        background_normal: 'images/Pepsi.png'
-        background_down: 'images/PepsiD.png'
+        #background_normal: 'images/Pepsi.png'
+        #background_down: 'images/PepsiD.png'
+        background_normal: 'newImages/pepsi.png'
+        background_down: 'newImages/pepsi.png'
         pos: 500, 3000
-        size: 150, 300
+        size: 300, 300
         on_press: root.pop('1')
 
     Button:
         id: pop2
-        background_normal: 'images/7up.png'
-        background_down: 'images/7upD.png'
+        #background_normal: 'images/7up.png'
+        #background_down: 'images/7upD.png'
+        background_normal: 'newImages/7up.png'
+        background_down: 'newImages/7up.png'
         pos: 700, 3000
-        size: 150, 300
+        size: 300, 300
         on_press: root.pop('2')
+
     Button:
         id: pop3
-        background_normal: 'images/Mug.png'
-        background_down: 'images/MugD.png'
+        #background_normal: 'images/Mug.png'
+        #background_down: 'images/MugD.png'
+        background_normal: 'newImages/mug.png'
+        background_down: 'newImages/mug.png'
         pos: 900, 3000
-        size: 150, 300
+        size: 300, 300
         on_press: root.pop('3')
 
     Button:
         id: pop4
-        background_normal: 'images/Dew.png'
-        background_down: 'images/DewD.png'
+        #background_normal: 'images/Dew.png'
+        #background_down: 'images/DewD.png'
+        background_normal: 'newImages/mtn_dew.png'
+        background_down: 'newImages/mtn_dew.png'
         pos: 1100, 3000
-        size: 150, 300
+        size: 300, 300
         on_press: root.pop('4')
 
     Button:
