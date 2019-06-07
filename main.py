@@ -209,7 +209,7 @@ class Pos(Widget):
         self.pop_quantity = 0
         self.pop_price = 1.90
         #hide the total display
-        self.hide_widgets([self.ids.order_title,self.ids.order1S,self.ids.order1SZP,self.ids.pops1,self.ids.pop_price1,self.ids.pops2,self.ids.pop_price2,self.ids.pops3,self.ids.pop_price3,self.ids.pops4,self.ids.pop_price4,self.ids.total_title,self.ids.gst_title,self.ids.Gst1,self.ids.Cash1])
+        self.hide_widgets([self.ids.order1S,self.ids.order1SZP,self.ids.pops1,self.ids.pop_price1,self.ids.pops2,self.ids.pop_price2,self.ids.pops3,self.ids.pop_price3,self.ids.pops4,self.ids.pop_price4,self.ids.total_title,self.ids.gst_title,self.ids.Gst1,self.ids.Cash1])
         #self.display_widget(self.ids.star,1280,600)
         #self.display_widget(self.ids.start_label, 200, 200)
 
@@ -249,6 +249,10 @@ class Pos(Widget):
         self.ids.pop_quantity3.text = "0"
         self.ids.pop_quantity4.text = "0"
         self.hide_widgets([self.ids.donut_price_title, self.ids.donut_price, self.ids.quantity_label, self.ids.donut_minus,self.ids.donut_plus,self.ids.donut_image,self.ids.donut_bag, self.ids.drink, self.ids.pop1,self.ids.pop2, self.ids.pop3, self.ids.pop4, self.ids.done,self.ids.next_button,self.ids.pop_quantity1,self.ids.pop_quantity2,self.ids.pop_quantity3,self.ids.pop_quantity4,self.ids.next_button_pop])
+        self.hide_widgets([self.ids.order1S, self.ids.order1SZP, self.ids.pops1, self.ids.pop_price1, self.ids.pops2,
+                           self.ids.pop_price2, self.ids.pops3, self.ids.pop_price3, self.ids.pops4,
+                           self.ids.pop_price4, self.ids.total_title, self.ids.gst_title, self.ids.Gst1,
+                           self.ids.Cash1])
 
     def set_num(self):
         self.key_num = data_test()
@@ -392,9 +396,14 @@ class Pos(Widget):
             #self.ids.pop3.pos = 900, 3000
             #self.ids.pop4.pos = 1100, 3000
             #self.ids.done.pos = 550, 3000
-            self.ids.pay.pos = 550, 400
+            #self.ids.pay.pos = 550, 400
+
+            self.display_total()
             #single method widget hide
-            self.hide_widgets([self.ids.pop1,self.ids.pop2,self.ids.pop3,self.ids.pop4,self.ids.done])
+            self.hide_widgets(
+                [self.ids.pop1, self.ids.pop2, self.ids.pop3, self.ids.pop4, self.ids.done, self.ids.pop_quantity1,
+                 self.ids.pop_quantity2, self.ids.pop_quantity3, self.ids.pop_quantity4, self.ids.next_button_pop,
+                 self.ids.donut_price, self.ids.donut_price_title])
 
     def pops(self):
         self.ids.pop1.pos = 500, 3000
@@ -491,7 +500,7 @@ class Pos(Widget):
         self.ids.done.pos = 550, 50
 
     def donut_next_clicked(self):
-        self.soup(self.donut_quantity)
+        self.soup(str(self.donut_quantity))
 
     def display_pop_new(self):
         self.ids.next_button_pop.pos = 505, -60
@@ -506,7 +515,11 @@ class Pos(Widget):
         self.ids.pop_quantity4.pos = 977, 240
 
     def pop_next_clicked(self):
-        pass
+
+        self.hide_widgets(
+            [self.ids.pop1, self.ids.pop2, self.ids.pop3, self.ids.pop4, self.ids.done, self.ids.pop_quantity1,
+             self.ids.pop_quantity2, self.ids.pop_quantity3, self.ids.pop_quantity4, self.ids.next_button_pop,self.ids.donut_price,self.ids.donut_price_title])
+        self.display_total()
 
     #pass widgets you want to hide, will set them out of the window, accepts array of widgets
     def hide_widgets(self,widgets):
@@ -540,6 +553,22 @@ class Pos(Widget):
             #self.ids.donut_price.color = [0,0,0,1]
             self.ids.donut_price.text = string_price
             self.ids.quantity_label.text = string_quantity
+
+    def display_total(self):
+        self.ids.order1S.pos = 570, 600
+        self.ids.order1SZP.pos = 770, 600
+        self.ids.pops1.pos = 570, 550
+        self.ids.pop_price1.pos = 770, 550
+        self.ids.pops2.pos = 570, 500
+        self.ids.pop_price2.pos = 770, 500
+        self.ids.pops3.pos = 570, 450
+        self.ids.pop_price3.pos = 770, 450
+        self.ids.pops4.pos = 570, 400
+        self.ids.pop_price4.pos = 770, 400
+        self.ids.total_title.pos = 530, 190
+        self.ids.gst_title.pos = 600, 240
+        self.ids.Gst1.pos = 700, 240
+        self.ids.Cash1.pos = 700, 190
 
 create_table()
 
