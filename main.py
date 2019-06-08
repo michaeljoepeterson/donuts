@@ -452,7 +452,9 @@ class Pos(Widget):
         self.pop_index = 0
         del self.order[:]
         self.clear_it()
-        self.ids.star.pos = 550, 150
+        #self.ids.star.pos = 550, 150
+        self.ids.star.pos = 0, 0
+        self.ids.start_label.pos = 600,300
 
     def next(self):
         #self.ids.pay.pos = 900, 3000
@@ -473,6 +475,7 @@ class Pos(Widget):
 
     #### test stuff positioning widgets within functions
     #help with readability and hopefully make changes in the future easier
+    #in all display functions if you need to reposition anything just change the code here and then it should reflected everywhere, since I replaced the positioning with these functions
     #display new donut ui
     def display_donuts_new(self):
         self.ids.donut_minus.pos = 50,200
@@ -501,7 +504,7 @@ class Pos(Widget):
 
     def donut_next_clicked(self):
         self.soup(str(self.donut_quantity))
-
+    #display new pop uo
     def display_pop_new(self):
         self.ids.next_button_pop.pos = 505, -60
         self.ids.pop1.pos = 120,270
@@ -555,20 +558,21 @@ class Pos(Widget):
             self.ids.quantity_label.text = string_quantity
 
     def display_total(self):
-        self.ids.order1S.pos = 570, 600
-        self.ids.order1SZP.pos = 770, 600
-        self.ids.pops1.pos = 570, 550
-        self.ids.pop_price1.pos = 770, 550
-        self.ids.pops2.pos = 570, 500
-        self.ids.pop_price2.pos = 770, 500
-        self.ids.pops3.pos = 570, 450
-        self.ids.pop_price3.pos = 770, 450
-        self.ids.pops4.pos = 570, 400
-        self.ids.pop_price4.pos = 770, 400
-        self.ids.total_title.pos = 530, 190
-        self.ids.gst_title.pos = 600, 240
-        self.ids.Gst1.pos = 700, 240
-        self.ids.Cash1.pos = 700, 190
+        self.ids.order1S.pos = 570, 530
+        self.ids.order1SZP.pos = 770, 530
+        self.ids.pops1.pos = 570, 480
+        self.ids.pop_price1.pos = 770, 480
+        self.ids.pops2.pos = 570, 430
+        self.ids.pop_price2.pos = 770, 430
+        self.ids.pops3.pos = 570, 380
+        self.ids.pop_price3.pos = 770, 380
+        self.ids.pops4.pos = 570, 330
+        self.ids.pop_price4.pos = 770, 330
+        self.ids.total_title.pos = 530, 120
+        self.ids.gst_title.pos = 600, 170
+        self.ids.Gst1.pos = 700, 170
+        self.ids.Cash1.pos = 700, 120
+        self.ids.pay.pos = 1077, -60
 
 create_table()
 

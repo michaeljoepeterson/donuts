@@ -5,7 +5,7 @@
         Rectangle:
             pos: self.pos
             size: self.size
-            source: 'newImages/background2.png'
+            source: 'newImages/background.png'
 
 
     Label:
@@ -417,10 +417,13 @@
 
     Button:
         id: pay
-        background_normal: 'images/Pay.png'
-        background_down: 'images/Pay.png'
+        #background_normal: 'images/Pay.png'
+        #background_down: 'images/Pay.png'
+        background_normal: 'newImages/pay.png'
+        background_down: 'newImages/pay.png'
         pos: 550, 3000
-        size: 551, 170
+        #size: 551, 170
+        size: 250, 250
         on_press: root.pay()
 
     Button:
