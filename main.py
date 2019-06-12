@@ -485,7 +485,7 @@ class Pos(Widget):
         self.ids.donut_price.pos = 640,120
         self.ids.donut_image.pos = 420,135
         self.ids.donut_bag.pos = 420,350
-        self.ids.next_button.pos = 505,-60
+        #self.ids.next_button.pos = 505,-60
 
     #use this to display original donuts ui
     def display_donuts(self):
@@ -534,7 +534,7 @@ class Pos(Widget):
 
     #functions for plus and minus donuts
     def minus_donuts(self):
-        #print("minus donut",self.ids.donut_price.color)
+        print("minus donut",self.donut_quantity)
         if self.donut_quantity > 0:
             self.donut_quantity -= 1
             string_quantity = str(self.donut_quantity)
@@ -545,8 +545,13 @@ class Pos(Widget):
             self.ids.donut_price.text = string_price
             self.ids.quantity_label.text = string_quantity
 
+        if self.donut_quantity <= 0:
+            self.hide_widgets([self.ids.next_button])
+            self.ids.drink.pos = 1077, -60
+
     def plus_donuts(self):
         #print("plus donut",self.ids.donut_price.color)
+
         if self.donut_quantity < 4:
             self.donut_quantity += 1
             string_quantity = str(self.donut_quantity)
@@ -556,6 +561,9 @@ class Pos(Widget):
             #self.ids.donut_price.color = [0,0,0,1]
             self.ids.donut_price.text = string_price
             self.ids.quantity_label.text = string_quantity
+        if self.donut_quantity > 0:
+            self.ids.next_button.pos = 1077, -60
+            self.hide_widgets([self.ids.drink])
 
     def display_total(self):
         self.ids.order1S.pos = 570, 530
